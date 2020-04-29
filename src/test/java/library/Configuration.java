@@ -3,6 +3,8 @@ package library;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,7 +47,7 @@ public class Configuration {
 		try {
 			
 			propertyConfiguration();
-			LogConfiguration();
+			logConfiguration();
 			setProperties();
 			setNode();
 			setUser();
@@ -113,7 +115,51 @@ public class Configuration {
 		Log.info("log4j is configured successfully");
 		
 		}
-	}
+	
+
+	public static void setProperties() {
+		try {
+			implicitWait=properties.getProperty("implicitWait","10");
+			explicitWait=Long.parseLong(properties.getProperty("explicitWait", "60"));
+			
+			reportLog=properties.getProperty("reportLog","./output/") + date + "/report.log";
+			reportFolder=properties.getProperty("reportFolder","./output") + date + "/";
+			reportExcelFile=properties.getProperty("reportExcelFile","./output/") + date + "/report.xlsx";
+			reportExcelSheetName=properties.getProperty("reportExcelSheetName","Status");
+			
+			screenshot=properties.getProperty("screenshotFolder","./output/") + date + "/Screenshots/";
+			screenshotFolder=properties.getProperty("screenshotFolder","./output/") + date + "/";
+			screenshotForAll=properties.getProperty("screenshotForAll","NO");
+			
+			//testDataSheetPath=properties.getProperty("testDataSheetPath");
+			
+		}catch (Exception e) {
+			Log.error("There is some problem in getting properties from config file "+e.getMessage());
+			e.printStackTrace();
+		}
+		}
+		
+		public static String getProperty(String propertyName) {
+			@SuppressWarnings("unused")
+			InputStream input=null;
+			
+			try {
+				String fileName=environment+".properties";
+				FileInputStream fis=new FileInputStream(new File("src/test/resources/Config/"+fileName));
+				properties1=new Properties();
+				properties.load(fis);
+				
+			}catch (IOException ex) {
+				ex.printStackTrace();
+				
+			}
+		
+			return properties1.getProperty(propertyName);
+			
+						
+			
+}}
+	
 	
 	
 

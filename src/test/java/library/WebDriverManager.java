@@ -1,5 +1,6 @@
 package library;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Capabilities;
@@ -16,12 +17,12 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class WebDriverManager {
 	
 	private WebDriver webDriver;
-	private DesiredCapabilities capabiities;
+	private DesiredCapabilities capabilities;
 	private EventFiringWebDriver driver;
 	
 	private Boolean isBrowserClosed;
 	
-	//private EventImplementations evenImplementations=new EventImplementations();
+	private EventImplementations eventImplementations=new EventImplementations();
 	
 	public void setIsBrowserClosed(final Boolean browserStatus) {
 		this.isBrowserClosed=browserStatus;
@@ -29,7 +30,8 @@ public class WebDriverManager {
 	
 	public WebDriver getDriver(){
 		if(this.driver!=null)
-			return intializeDriver(Configuration.browser);
+			return this.driver;
+			return initializeDriver(Configuration.browser);
 		
 	}
 	
@@ -42,20 +44,20 @@ public class WebDriverManager {
 				
 				case "IE":
 				case "INTERNET EXPLORER":
-					capabiities=DesiredCapabilities.internetExplorer();
-					Capabilities.setBrowserName("internet explorer");
+					capabilities=DesiredCapabilities.internetExplorer();
+					capabilities.setBrowserName("internet explorer");
 					capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION,true);
 					capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-					webDriver = new RemoteWebDriver(new URL(Configuration.hubAddress), options);
+					webDriver = new RemoteWebDriver(new URL(Configuration.hubAddress), capabilities);
 					break;
 					
 				case "CH":
 				case "CHROME":
 					capabilities=DesiredCapabilities.chrome();
-					Capabilities.setBrowserName("chrome");
-					ChromeOptions=new ChromeOptions();
+					capabilities.setBrowserName("chrome");
+					ChromeOptions options=new ChromeOptions();
 					options.merge(capabilities);
-					webDriver=new RemoteWebDriver(new URL(Configuratios.hubAddress),options);
+					webDriver=new RemoteWebDriver(new URL(Configuration.hubAddress),options);
 					break;
 							
 				}
@@ -66,10 +68,10 @@ public class WebDriverManager {
 					System.setProperty("webdriver.ie.driver", Configuration.driverPath + "IEDriverServer.exe");
 					capabilities=DesiredCapabilities.internetExplorer();
 					capabilities.setCapability("unexpectedAlertBehaviour","accept");
-					capabillities.setCapability("ignoreZoomSetting", true);
+					capabilities.setCapability("ignoreZoomSetting", true);
 					capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
 					InternetExplorerOptions options=new InternetExplorerOptions();
-					options.merge(capabiities);
+					options.merge(capabilities);
 					webDriver =new InternetExplorerDriver(options);
 					break;
 					
