@@ -142,7 +142,7 @@ public class EventImplementations implements WebDriverEventListener {
 			throwable.printStackTrace();
 			Reporting.attachScreenshot(driver);
 			Log.error("Screenshot is attached to report on Exception - " + throwable.getStackTrace());
-		} catch (IOException e) {
+		} catch (IOException | InterruptedException e) {
 			Log.error(e.toString());
 			e.printStackTrace();
 		}

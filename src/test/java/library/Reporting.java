@@ -34,7 +34,7 @@ public class Reporting {
 		
 	}
 	
-	public static void attachScreenshot(WebDriver driver) throws IOException{
+	public static void attachScreenshot(WebDriver driver) throws IOException, InterruptedException{
 		
 		Reporter.addScreenCaptureFromPath(GenericFunctions.captureScreenshot(driver));
 	}
