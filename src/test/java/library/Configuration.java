@@ -54,7 +54,8 @@ public class Configuration {
 			setEnvironment();
 			
 			browser=properties.getProperty("browser", "IE");
-			driverPath=properties.getProperty("driverPath", "src/test/resources/Utility/");
+			driverPath=properties.getProperty("driverPath", "src/test/resources/Drivers/");
+			
 			Log.info("Values from properties file fetched successfully");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
