@@ -12,6 +12,12 @@
       <scope>test</scope>
     </dependency>
     
+    <dependency>
+  	<groupId>org.seleniumhq.selenium</groupId>
+  	<artifactId>selenium-server</artifactId>
+  	<version>3.4.0</version>
+	</dependency>
+    
     <!-- https://mvnrepository.com/artifact/com.vimalselvam/cucumber-extentsreport -->
 	<dependency>
     <groupId>com.vimalselvam</groupId>

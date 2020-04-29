@@ -20,9 +20,10 @@ public class WebDriverManager {
 	private DesiredCapabilities capabilities;
 	private EventFiringWebDriver driver;
 	
+	@SuppressWarnings("unused")
 	private Boolean isBrowserClosed;
 	
-	private EventImplementations eventImplementations=new EventImplementations();
+	private EventImplementations eventImplementation=new EventImplementations();
 	
 	public void setIsBrowserClosed(final Boolean browserStatus) {
 		this.isBrowserClosed=browserStatus;
@@ -57,7 +58,7 @@ public class WebDriverManager {
 					capabilities.setBrowserName("chrome");
 					ChromeOptions options=new ChromeOptions();
 					options.merge(capabilities);
-					webDriver=new RemoteWebDriver(new URL(Configuration.hubAddress),options);
+					webDriver=new RemoteWebDriver(new URL(Configuration.hubAddress),(Capabilities) options);
 					break;
 							
 				}
@@ -72,7 +73,7 @@ public class WebDriverManager {
 					capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
 					InternetExplorerOptions options=new InternetExplorerOptions();
 					options.merge(capabilities);
-					webDriver =new InternetExplorerDriver(options);
+					webDriver = new InternetExplorerDriver((Capabilities) options);
 					break;
 					
 				case "CH":
