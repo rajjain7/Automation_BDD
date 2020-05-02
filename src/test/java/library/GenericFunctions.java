@@ -3,6 +3,7 @@ package library;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 import org.codehaus.plexus.util.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
@@ -95,6 +96,21 @@ public class GenericFunctions {
 			Log.info(serviceName + " is killed from system processes ");
 		} catch (IOException e) {
 			throw new CustomException(e);
+		}
+	}
+	
+	public static void switchToNewWindow(WebDriver driver) throws InterruptedException {
+		Configuration.defaultWindow=driver.getWindowHandle();
+		Log.info("Default Window id: "+ Configuration.defaultWindow);
+		Thread.sleep(2000);
+		Set<String> windowSet =driver.getWindowHandles();
+		Log.info("Window Handles Found: " + windowSet);
+		for(String window:windowSet) {
+			if(!window.equals(Configuration.defaultWindow)) {
+				driver.switchTo().window(window);
+				break;
+			}
+			
 		}
 	}
 	

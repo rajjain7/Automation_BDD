@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import junit.framework.Assert;
+import library.Configuration;
+import library.GenericFunctions;
+
 public class LoginPage {
 	
 	WebDriver driver;
@@ -17,12 +21,29 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="")
+	@FindBy(id="__w2_wFRKVF3O20_email")
 	private WebElement username;
 	
-	@FindBy(id="")
+	@FindBy(id="__w2_wFRKVF3O20_password")
 	private WebElement password;
 	
+	@FindBy(id="__w2_wFRKVF3O20_submit_button")
+	private WebElement login;
 	
+	
+	public void loginAppliaction() throws InterruptedException {
+		//driver.get(Configuration.webUrl);
+		//GenericFunctions.switchToNewWindow(driver);
+		username.sendKeys(Configuration.userName);
+		password.sendKeys(Configuration.password);
+		login.submit();
+	}
+	
+	public void verifyLoginPageTitle() throws InterruptedException {
+		driver.get(Configuration.webUrl);
+		GenericFunctions.switchToNewWindow(driver);
+		Assert.assertEquals(driver.getTitle(), "");
+		
+	}
 
 }
