@@ -24,18 +24,25 @@
     <artifactId>cucumber-extentsreport</artifactId>
     <version>3.1.1</version>
 	</dependency>
+	
+	<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>3.1.1</version>
+	</dependency>
    
     <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
 	<dependency>
     <groupId>net.masterthought</groupId>
     <artifactId>cucumber-reporting</artifactId>
-    <version>5.2.1</version>
+    <version>3.8.0</version>
 	</dependency>
 	
-    <dependency>
+   
+	<dependency>
     <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>4.0.1</version>
+    <artifactId>extentreports-cucumber4-adapter</artifactId>
+    <version>1.0.6</version>
 	</dependency>
     
     <dependency>
@@ -151,9 +158,9 @@
 
 <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 <dependency>
-    <groupId>info.cukes</groupId>
+    <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
-    <version>1.2.6</version>
+    <version>4.2.6</version>
     <type>pom</type>
 </dependency>
 
@@ -211,7 +218,7 @@
  
  <configuration>
  
- <projectName>Automation Testing</projectName>
+ <projectName>Automation_BDD</projectName>
  <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
  <cucumberOutput>target/cucumber-reports/CucumberTestReport.json</cucumberOutput>
  <buildNumber>1</buildNumber>

@@ -18,7 +18,11 @@ import library.Reporting;
 @RunWith(ExtendedCucumber.class)
 @ExtendedCucumberOptions()
 @CucumberOptions(features="src/test/resources/Features", dryRun=false, glue="src/test/java/stepDefinitions",tags= {"login"},
-plugin= {"com.cucmber.listener.ExtentCucumberFormatter:" })
+plugin= {"com.cucumber.listener.ExtentCucumberFormatter:" })
+
+//plugin= {"json:target/RunCuke/cucumber.json",
+//"pretty","html:target/RunCuke/cucumber.html",
+//"com.cucumber.listener.ExtentCucumberFormatter"},
 
 public class TestRunner {
 	
