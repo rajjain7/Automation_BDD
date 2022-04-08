@@ -33,6 +33,7 @@ public class TestRunner {
 		GenericFunctions.createScreenShotFolder();
 		GenericFunctions.killProcess("chromedriver.exe");
 	}
+	//test
 	
 	@RetryAcceptance
 	public static boolean retryCheck(final Throwable e) {
