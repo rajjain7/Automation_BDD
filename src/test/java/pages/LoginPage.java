@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,6 +30,9 @@ public class LoginPage {
 	
 	@FindBy(id="__w2_wFRKVF3O20_submit_button")
 	private WebElement login;
+	
+	//@FindBy(xpath="")
+	//private WebElement t;
 	
 	
 	public void loginAppliaction() throws InterruptedException {

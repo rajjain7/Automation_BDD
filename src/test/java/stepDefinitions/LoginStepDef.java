@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import context.TestContextManager;
 import cucumber.api.java.en.And;
@@ -27,6 +28,7 @@ public class LoginStepDef {
 	@Given("^user is on the login page of the application$")
 	public void user_is_on_the_login_page_of_the_application() throws Throwable{
 		loginPageObj.verifyLoginPageTitle();
+	
 		
 	}
 	
